@@ -1,3 +1,8 @@
+/*
+it's hard for me to give a score. But I notice your effort. 
+Please come to me on campus or make an appointment with me. I will teach me one question by one question.
+Don't worry about the score. The point is, you have learned java at last, not the score.
+*/
 /**
  * Created by Rose on 1/27/17.
  * Assignment for your lecture 3. Please finish all the questions under
@@ -16,7 +21,7 @@ public class Assignment3 {
 	 * Given an array, reverse the elements within this array and print the
 	 * result eg, given{1,2,3,4}, print{4,3,2,1}
 	 */
-	public static void reverseArray(int[] nums) {
+	public static void reverseArray(int[] nums) {      //miss one corner case:if nums is an empty array, "System.out.print(nums[nums.length - 1] + "}");" will throw exception for array index overflow
 		int i = 0;
 		int j = nums.length - 1;
 		int k;
@@ -43,7 +48,7 @@ public class Assignment3 {
 	 * most significant digit is at the head of the array. eg, given {1,2,9},
 	 * reutrn{1,3,0}.
 	 */
-	public static int[] plusOne(int[] digits) {
+	public static int[] plusOne(int[] digits) {      //two small place wrong: 1. I know you want to consider corner case, but it's not correct 2. if digits only have one number: 0, your output is an empty array, but you should return {1};
 		if (digits[0] == 0)
 			return null;// leading number should not be 0.
 		int[] onemoreDigits = new int[digits.length + 1];
@@ -77,7 +82,7 @@ public class Assignment3 {
 	 * between 1 and that integer(inclusive). eg, input is 18, you should
 	 * return{2,3,5,7,11,13,17}
 	 */
-	public static boolean isPrime(int n) {
+	public static boolean isPrime(int n) {                              
 		if (n <= 1)
 			return false;
 		for (int x = 2; x <= n / 2; x++) {
@@ -88,7 +93,7 @@ public class Assignment3 {
 		return true;
 	}
 
-	public static int[] generatePrimes(int n) {
+	public static int[] generatePrimes(int n) {         //miss one corner case: if n is 2, your return is an empty array, but you should return {2};
 		int counter = 0;//count the number of primes
 		int[] underPrime = new int[n];//store the generated primes
 		for (int current = 2; current < n; current++) {
@@ -109,7 +114,7 @@ public class Assignment3 {
 	 * check if s2 is a rotation of s1, using only one call to isSubstring eg,
 	 * "pineapple" is a rotation of "neapplepi"
 	 */
-	public static boolean isSubstring(String s1, String s2) {
+	public static boolean isSubstring(String s1, String s2) {       
 		if (s2 == null || s2.length() == 0)
 			return true;
 		if (s1 == null || s1.length() == 0)
@@ -124,7 +129,7 @@ public class Assignment3 {
 		return false;
 	}
 
-	public static boolean isRotation(String s1, String s2) {
+	public static boolean isRotation(String s1, String s2) {        //wrong: if input is "ababaab", "baababab", your return is true, but you should return false since they do have the same length
 		String s = s1 + s1;
 		if (isSubstring(s, s2)) {
 			return true;
@@ -137,7 +142,7 @@ public class Assignment3 {
 	 * the other hint: the comparison is case sensitive and whitespace is
 	 * significant
 	 */
-	public static boolean isPermutation(String s1, String s2) {
+	public static boolean isPermutation(String s1, String s2) {    //wrong: if input is "abc", "bac", your output is false but you should return true
 		ArrayList<String> S1 = new ArrayList<String>();
 		ArrayList<String> S2 = new ArrayList<String>();
 		S1.add(s1);
@@ -159,7 +164,7 @@ public class Assignment3 {
 	 * Assume the string to be encoded consists of letters of the alphabet, with
 	 * no digits, and the string to be decoded is a valid encoding.
 	 */
-		public static String encoding(String s) {
+		public static String encoding(String s) {       //wrong, you will never jump out of the for loop
 			String encodingS="";
 			int k=0;//k is the index of a different character, also the counter for the previous same character.
 			for(int i=1;i<s.length();i+=k){
@@ -187,7 +192,7 @@ public class Assignment3 {
      *                    7,8,9           9 6 3
      *tip: image could be a square or a rectangle.
      */
-	public static void rotate(int[][] matrix) {
+	public static void rotate(int[][] matrix) {         //wrong: your array index is out of bound
 		int m = matrix.length;// m is one dimension of the matrix
 		int n = matrix[0].length;//n is the other dimension of the 2D matrix
 		int i,j;
@@ -212,7 +217,7 @@ public class Assignment3 {
 	 * parentheses is "()". For example, given "(())", return 2; given "(()))",
 	 * return -1.
 	 */
-	public static int countValidParentheses(String s) {
+	public static int countValidParentheses(String s) {          //wrong: if s is ")(", it is not valid and you should return -1
 		int counter1=0, counter2 = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) == '(')
